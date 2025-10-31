@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 import { GA_TRACKING_ID } from "@/lib/gtag"
-import AnalyticsProvider from './analytics-provider'
+
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -47,7 +47,7 @@ export default function RootLayout({
             `,
           }}
         />
- <AnalyticsProvider />
+
         {children}
       </body>
     </html>
