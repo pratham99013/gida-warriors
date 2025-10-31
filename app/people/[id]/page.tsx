@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { useEffect } from "react"
 import toast, { Toaster } from "react-hot-toast";
-
+import { use } from "react"
 const profiles = {
   ankur: {
     name: "Ankur Mishra",
@@ -86,10 +86,12 @@ const profiles = {
   },
 }
 
-export default function ProfilePage({ params }: { params: { id: string } }) {
+export default function ProfilePage() {
   const router = useRouter()
-  
-  const profile = profiles[params.id as keyof typeof profiles]
+   const params = useParams() 
+
+  const id = params?.id as string
+  const profile = profiles[id as keyof typeof profiles]
 
   useEffect(() => {
     if (!profile) {

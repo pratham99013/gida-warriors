@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Passion, Brotherhood, and Adventure. Explore the legacy of GIDA Warriors.",
   generator: "v0.app",
    icons: {
-    icon: "/WhatsApp Image 2025-10-31 at 21.00.05.jpeg", // Path relative to the /public folder
+    icon: "/Users/prathammishra/Desktop/neek/my-app/public/kd.jpeg", // Path relative to the /public folder
   },
 }
 
