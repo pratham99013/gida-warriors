@@ -1,78 +1,104 @@
+"use client"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-
+import { useEffect, useState } from "react";
 export default function Home() {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+ 
+
+  const backgroundGifs = [
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Destiny%202%20Explosion%20GIF%20by%20DestinyTheGame-rgeiXHhFe1uv9SsfXvqWpon0u2Exbo.gif',
+    'https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eXJjeHd6cXpra3RjZ21tcGhvZXdjanM4NTZhd201eGVidXl1Mm8waiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/JzFAA0A4UTfdecIKIo/giphy.gif',
+     'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTQ2dzl4dWxtMmR5N2pkY2MyNHBqeXFydGZjM3doN2M2N2swMmp1dyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qKcalQazZEnLJFnOQ3/giphy.gif',
+     'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTQ2dzl4dWxtMmR5N2pkY2MyNHBqeXFydGZjM3doN2M2N2swMmp1dyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/K93WflKs836lqy2bN1/giphy.gif',
+     'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTQ2dzl4dWxtMmR5N2pkY2MyNHBqeXFydGZjM3doN2M2N2swMmp1dyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qs9FriWwyK48q9gJz0/giphy.gif',
+     
+  ];
+   useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundGifs.length);
+    }, 3000); // Change background every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [backgroundGifs.length]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b border-border z-50">
+     <nav className="fixed top-0 w-full bg-gray-950/80 backdrop-blur-sm border-b border-gray-800 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-3"
-          >
+          <Link href="/" className="flex items-center gap-3">
             <img 
               src="/WhatsApp Image 2025-10-31 at 21.00.05.jpeg" 
               alt="GIDA Warriors Logo" 
-              className="w-10 h-10 rounded-lg object-cover border border-primary"
+              className="w-10 h-10 rounded-lg object-cover border border-blue-500"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
               GIDA Warriors
             </span>
           </Link>
           <div className="flex gap-6 items-center">
-            <Link href="/" className="text-foreground hover:text-primary transition">
+            <Link href="/" className="text-gray-300 hover:text-blue-500 transition">
               Home
             </Link>
-            <Link href="/people" className="text-foreground hover:text-primary transition">
+            <Link href="/people" className="text-gray-300 hover:text-blue-500 transition">
               People
             </Link>
-            <Link href="/pratham-vs-ankur" className="text-foreground hover:text-primary transition">
+            <Link href="/pratham-vs-ankur" className="text-gray-300 hover:text-blue-500 transition">
               Pratham VS Ankur
+            </Link>
+            <Link href="/contact" className="text-gray-300 hover:text-blue-500 transition">
+              Contact-Us
             </Link>
           </div>
         </div>
       </nav>
-
       {/* Hero Section */}
-      <section className="min-h-screen pt-20 pb-20 flex items-center justify-center relative overflow-hidden">
-        <div
-          className="absolute inset-0 z-0 opacity-40"
-          style={{
-            backgroundImage:
-              'url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Destiny%202%20Explosion%20GIF%20by%20DestinyTheGame-rgeiXHhFe1uv9SsfXvqWpon0u2Exbo.gif")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundAttachment: "fixed",
-          }}
-        ></div>
-        <div className="absolute inset-0 z-1 bg-gradient-to-b from-background/70 via-background/50 to-background"></div>
+       <section className="min-h-screen pt-20 pb-20 flex items-center justify-center relative overflow-hidden">
+      {/* Animated background with fade transition */}
+      <div className="absolute inset-0 z-0">
+        {backgroundGifs.map((gif, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 transition-opacity duration-1000"
+            style={{
+              backgroundImage: `url("${gif}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed',
+              opacity: currentBgIndex === index ? 0.4 : 0,
+            }}
+          />
+        ))}
+      </div>
+      
+      <div className="absolute inset-0 z-1 bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900"></div>
 
-        <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
-          <div className="mb-8">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-              GIDA Warriors
-            </h1>
-            <p className="text-xl text-muted-foreground mb-4">The Legacy of Passion, Brotherhood, and Adventure</p>
-          </div>
-
-          <div className="flex gap-4 justify-center mb-12">
-            <Link href="/people">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg">
-                Meet the Warriors
-              </Button>
-            </Link>
-            <a href="#about">
-              <Button
-                variant="outline"
-                className="px-8 py-6 text-lg border-primary text-primary hover:bg-primary/10 bg-transparent"
-              >
-                Learn More
-              </Button>
-            </a>
-          </div>
+      <div className="max-w-6xl mx-auto px-4 text-center relative z-10">
+        <div className="mb-8">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+            GIDA Warriors
+          </h1>
+          <p className="text-xl text-gray-400 mb-4">
+            The Legacy of Passion, Brotherhood, and Adventure
+          </p>
         </div>
-      </section>
+
+        <div className="flex gap-4 justify-center mb-12">
+          <a href="/people">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-lg transition-colors">
+              Meet the Warriors
+            </button>
+          </a>
+          <a href="#about">
+            <button className="px-8 py-6 text-lg border-2 border-blue-600 text-blue-500 hover:bg-blue-600/10 bg-transparent rounded-lg transition-colors">
+              Learn More
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
 
       {/* About Section */}
     {/* About Section */}

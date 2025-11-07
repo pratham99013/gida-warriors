@@ -95,23 +95,30 @@ export default function PeoplePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b border-border z-50">
+   <nav className="fixed top-0 w-full bg-gray-950/80 backdrop-blur-sm border-b border-gray-800 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
-          >
-            GIDA Warriors
+          <Link href="/" className="flex items-center gap-3">
+            <img 
+              src="/WhatsApp Image 2025-10-31 at 21.00.05.jpeg" 
+              alt="GIDA Warriors Logo" 
+              className="w-10 h-10 rounded-lg object-cover border border-blue-500"
+            />
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              GIDA Warriors
+            </span>
           </Link>
           <div className="flex gap-6 items-center">
-            <Link href="/" className="text-foreground hover:text-primary transition">
+            <Link href="/" className="text-gray-300 hover:text-blue-500 transition">
               Home
             </Link>
-            <Link href="/people" className="text-primary font-semibold">
+            <Link href="/people" className="text-gray-300 hover:text-blue-500 transition">
               People
             </Link>
-            <Link href="/pratham-vs-ankur" className="text-foreground hover:text-primary transition">
+            <Link href="/pratham-vs-ankur" className="text-gray-300 hover:text-blue-500 transition">
               Pratham VS Ankur
+            </Link>
+            <Link href="/contact" className="text-gray-300 hover:text-blue-500 transition">
+              Contact-Us
             </Link>
           </div>
         </div>
