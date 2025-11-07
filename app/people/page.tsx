@@ -114,9 +114,7 @@ export default function PeoplePage() {
             <Link href="/people" className="text-gray-300 hover:text-blue-500 transition">
               People
             </Link>
-            <Link href="/pratham-vs-ankur" className="text-gray-300 hover:text-blue-500 transition">
-              Pratham VS Ankur
-            </Link>
+           
             <Link href="/contact" className="text-gray-300 hover:text-blue-500 transition">
               Contact-Us
             </Link>
